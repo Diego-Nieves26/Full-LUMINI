@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import assets from "../../assets/index";
-import Dropdown from "react-bootstrap/Dropdown";
-import useDataContext from "../../hooks/useDataContext";
 import { instance } from "../../axios/axiosConfig";
+import useDataContext from "../../hooks/useDataContext";
 
 export default function Navbar() {
   const { userCredentials } = useDataContext();
@@ -14,17 +13,17 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar container" >
-      <div className="container-fluid">
+    <nav className="navbar container">
+      <div className="container-fluid d-flex align-items-center justify-content-center justify-content-sm-between">
         <a className="navbar-brand">
           <img
             src={assets.Logo.img}
             alt={assets.Logo.info}
-            title={assets.Logo.info}    
-            style={{width:'230px'}}        
+            title={assets.Logo.info}
+            style={{ width: "230px" }}
           />
         </a>
-        {userCredentials.login === null &&(
+        {userCredentials.login === null && (
           <div className="d-flex gap-4">
             <Link
               className="border-0 bg-transparent text-decoration-none text-muted"
@@ -38,9 +37,8 @@ export default function Navbar() {
             >
               Registrarse
             </Link>
-          </div>)
-                  
-        }
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import {
   Button,
@@ -10,11 +11,15 @@ import {
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import assets from "../../assets/index";
 import { instance } from "../../axios/axiosConfig";
 import { alertOk, errorAlert } from "../../components/Alert/Alert";
 import "./PagRegister.css";
-import { motion } from "framer-motion";
-import assets from "../../assets/index";
+
+const animate = {
+  "data-aos": "fade-up",
+  "data-aos-anchor-placement": "center-bottom",
+};
 
 const PagRegister = () => {
   const {
@@ -69,12 +74,37 @@ const PagRegister = () => {
       transition={{ duration: 0.3 }}
       className="container mt-lg-5"
     >
-      <Container className="register">
-        <Row xs={1} lg={2}>
+      <Container className="register p-3">
+        <Row xs={1} lg={2} className="gap-5 pb-5 flex-sm-nowrap">
           <Col>
-            <Form className="mt-5 py-5" onSubmit={handleSubmit(submit)}>
+            <Card.Body
+              className="d-flex flex-column align-items-center"
+              {...animate}
+            >
+              <Card.Title>
+                <a className="navbar-brand">
+                  <Image
+                    className="rounded"
+                    src={assets.Logo.img}
+                    alt={assets.Logo.info}
+                    title={assets.Logo.info}
+                    style={{ width: "230px" }}
+                  />
+                </a>
+              </Card.Title>
+              <Image
+                className="rounded img-fluid w-100"
+                src={assets.Test02.img}
+                alt={assets.Test02.info}
+                title={assets.Test02.info}
+                style={{ maxWidth: "370px" }}
+              />
+            </Card.Body>
+          </Col>
+          <Col>
+            <Form onSubmit={handleSubmit(submit)}>
               <Row>
-                <Form.Group as={Col}>
+                <Form.Group as={Col} {...animate}>
                   <Form.Label> First Name</Form.Label>
                   <Form.Control
                     {...register("name", {
@@ -87,7 +117,7 @@ const PagRegister = () => {
                     <p>el campo First Name es requerido</p>
                   )}
                 </Form.Group>
-                <Form.Group as={Col}>
+                <Form.Group as={Col} {...animate}>
                   <Form.Label> Last Name</Form.Label>
                   <Form.Control
                     {...register("surname", {
@@ -101,7 +131,7 @@ const PagRegister = () => {
                   )}
                 </Form.Group>
               </Row>
-              <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Group as={Col} controlId="formGridEmail" {...animate}>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   {...register("email", {
@@ -119,7 +149,7 @@ const PagRegister = () => {
                   <p>El formato del Email es incorrecto</p>
                 )}
               </Form.Group>
-              <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Group as={Col} controlId="formGridPassword" {...animate}>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   {...register("password", {
@@ -144,39 +174,6 @@ const PagRegister = () => {
                 Register
               </Button>
             </Form>
-            <button
-              type="button"
-              className="w-100 btn btn-outline-primary m-auto"
-            >
-              Registrate con
-              <img
-                src={assets.GoogleIcon.img}
-                className="ms-2"
-                style={{ width: "20px" }}
-              />
-            </button>
-          </Col>
-          <Col>
-            <Card.Body className="mb-5 pb-5 d-flex flex-column align-items-center">
-              <Card.Title>
-                <a className="navbar-brand">
-                  <Image
-                    className="rounded"
-                    src={assets.Logo.img}
-                    alt={assets.Logo.info}
-                    title={assets.Logo.info}
-                    style={{ width: "230px" }}
-                  />
-                </a>
-              </Card.Title>
-              <Image
-                className="rounded"
-                src={assets.Test02.img}
-                alt={assets.Test02.info}
-                title={assets.Test02.info}
-                style={{ width: "350px", height: "350px" }}
-              />
-            </Card.Body>
           </Col>
         </Row>
       </Container>

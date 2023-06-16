@@ -1,18 +1,11 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { PostCard, Navbar } from "../../components";
-import { motion, useScroll, useSpring } from "framer-motion";
-import { instance } from "../../axios/axiosConfig";
-import useDataContext from "../../hooks/useDataContext";
-import {
-  Col,
-  Dropdown,
-  Form,
-  ListGroup,
-  ListGroupItem,
-  Row,
-} from "react-bootstrap";
-import assets from "../../assets";
+import { Col, ListGroup, Row } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
+import assets from "../../assets";
+import { instance } from "../../axios/axiosConfig";
+import { Navbar, PostCard } from "../../components";
+import useDataContext from "../../hooks/useDataContext";
 
 export default function HomePage() {
   const [publicationsData, setPublicationsData] = useState([]);
@@ -75,14 +68,18 @@ export default function HomePage() {
           </ListGroup>
         </Col>
         <Col className="p-0">
-          <div className="w-100 p-3 py-5 container py-sm-3 pb-sm-5  flex-sm-column align-items-center">
+          <div className="w-100 p-3 py-5 container py-sm-3 pb-sm-5 flex-sm-column align-items-center">
             {showPublications.length !== 0 ? (
               showPublications.map((publication, i) => {
                 return <PostCard data={publication} key={i + 1} />;
               })
             ) : (
               <span>
-                <img src={assets.LoaderPost.img} alt={assets.LoaderPost.info} />
+                <img
+                  src={assets.LoaderPost.img}
+                  alt={assets.LoaderPost.info}
+                  className="img-fluid"
+                />
               </span>
             )}
           </div>

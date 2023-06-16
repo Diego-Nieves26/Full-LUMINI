@@ -1,12 +1,11 @@
-import { alertOk, errorAlert } from "../../components/Alert/Alert";
-import { Container, Form, Button, Card } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { instance } from "../../axios/axiosConfig";
-import { useForm } from "react-hook-form";
-import React, { useState } from "react";
-import images from "../../assets/index";
 import { motion } from "framer-motion";
-import assets from "../../assets/index";
+import React, { useState } from "react";
+import { Button, Card, Container, Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import images from "../../assets/index";
+import { instance } from "../../axios/axiosConfig";
+import { alertOk, errorAlert } from "../../components/Alert/Alert";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -120,11 +119,8 @@ export default function LoginPage() {
             Iniciar sesion
           </Button>
           <span>O</span>
-          <button type="button" className="w-75 btn btn-outline-primary">
-            Inicia sesion con <img src={assets.GoogleIcon.img} className="ms-2" style={{width: "20px"}}/>
-          </button>
           <h6>Aun no eres usuario</h6>
-          <Button type="submit" className="w-75 bg-secondary">
+          <Button type="button" className="w-75 bg-secondary">
             <Link className="text-decoration-none text-white" to="/register">
               Registrate
             </Link>
